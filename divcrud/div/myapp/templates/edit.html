@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block body %}
+<form>
+    {% csrf_token %}
+    <input type="hidden" id="hitmen_id" value="{{ hitmen.id}}"/>
+    <div class="mb-3">
+        <label>Mobilenumber</label>
+        <input type="text" id="mobilenumber" value="{{ hitmen.mobilenumber }}" style="width:30%;" class="form-control"  required="required"/>
+    </div>
+    <div class="mb-3">
+        <label>Otp</label>
+        <input type="text" id="otp" value="{{ hitmen.otp }}" style="width:30%;" class="form-control"  required="required"/>
+    </div>
+    <div class="mb-3">
+        <button type="button" id="update" class="btn btn-warning">Update</button>
+    </div>
+</form>
+{% endblock %}

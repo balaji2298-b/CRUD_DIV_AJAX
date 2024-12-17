@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block body %}
+<form  class="form-inline">
+    {% csrf_token %}
+    <div class="mb-3">
+        <label>Mobilenumber</label>
+        <input type="text" id="mobilenumber"  pattern="[0-9]{10}"class="form-control" style="width:30%;" required="required"/>
+    </div>
+    <div class="mb-3">
+        <label>Otp</label>
+        <input type="text" id="otp" class="form-control" style="width:30%;" required="required"/>
+    </div>
+    <div class="mb-3">
+        <button type="button" id="created" class="btn btn-primary">Create</button>
+    </div>
+</form>
+<br/>
+
+
+    <div class="items-container">
+        {% for hitmen in hitmens %}
+        <div class="item" >
+            <h3>{{ hitmen.mobilenumber }}</h3>
+            <h3>{{ hitmen.otp }}</h3>
+           
+            <a class="btn btn-warning edit"  name="{{hitmen.id}}">Edit</a>
+            <a href="{% url 'delete' id=hitmen.id %}"class="btn btn-danger delete" name="{{hitmen.id}}">Delete</a> 
+        </div>   
+        {% endfor %}
+    </div>
+{% endblock %}
